@@ -1,12 +1,11 @@
 #import <ApplicationServices/ApplicationServices.h>
-
-#define SIGN(x) ((x < 0) - (x > 0))
-#define LINES 4
+#define lines 4
+#define sign(delta) ((delta < 0) - (delta > 0))
 
 CGEventRef cgEventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef event, void *refcon) {
     if (!CGEventGetIntegerValueField(event, kCGScrollWheelEventIsContinuous)) {
         int64_t delta = CGEventGetIntegerValueField(event, kCGScrollWheelEventPointDeltaAxis1);
-        CGEventSetIntegerValueField(event, kCGScrollWheelEventDeltaAxis1, SIGN(delta) * LINES);
+        CGEventSetIntegerValueField(event, kCGScrollWheelEventDeltaAxis1, sign(delta) * lines);
     }
     return event;
 }
