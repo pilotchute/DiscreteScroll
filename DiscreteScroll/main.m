@@ -1,6 +1,6 @@
 #import <ApplicationServices/ApplicationServices.h>
 #define lines 4
-#define sign(delta) ((delta > 0) - (delta < 0))
+#define sign(delta) ((delta < 0) - (delta > 0))
 
 CGEventRef cgEventCallback(CGEventTapProxy proxy, CGEventType type, CGEventRef event, void *refcon)
 {
